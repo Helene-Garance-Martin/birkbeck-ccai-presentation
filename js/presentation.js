@@ -38,8 +38,21 @@ nodeBoxes.forEach((node) => {
   const tipId = "tip-" + node.dataset.tip;
   const tip = document.getElementById(tipId);
   if (!tip) return;
+  let hideTimer;
+
+  function cancelHide() {
+    clearTimeout(hideTimer);
+  }
+
+  function scheduleHide() {
+    cancelHide();
+    hideTimer = setTimeout(() => {
+      tip.classList.remove("show");
+    }, 180);
+  }
 
   function showTip(e) {
+    cancelHide();
     document.querySelectorAll(".flow-tip").forEach((t) => {
       t.classList.remove("show");
     });
@@ -91,6 +104,9 @@ nodeBoxes.forEach((node) => {
   }
 
   node.addEventListener("mouseenter", showTip);
+  node.addEventListener("mouseleave", scheduleHide);
+  tip.addEventListener("mouseenter", cancelHide);
+  tip.addEventListener("mouseleave", scheduleHide);
 
   node.addEventListener("click", function (e) {
     e.stopPropagation();
