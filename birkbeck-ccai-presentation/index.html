@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>CCAI Workshop Triage — Presentation</title>
+<link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+<div class="deck">
+  <!-- Side navigation -->
+  <nav class="side-nav">
+      <div class="nav-item active" data-slide="0" onclick="goSlide(0)">
+        <span class="nav-num">1</span>
+        <span class="nav-label">Manifester</span>
+      </div>
+      <div class="nav-item" data-slide="1" onclick="goSlide(1)">
+        <span class="nav-num">2</span>
+        <span class="nav-label">Triage</span>
+      </div>
+      <div class="nav-item" data-slide="2" onclick="goSlide(2)">
+        <span class="nav-num">3</span>
+        <span class="nav-label">Provenance</span>
+      </div>
+      <div class="nav-item" data-slide="3" onclick="goSlide(3)">
+        <span class="nav-num">4</span>
+        <span class="nav-label">Support</span>
+      </div>
+      <div class="nav-item" data-slide="4" onclick="goSlide(4)">
+        <span class="nav-num">5</span>
+        <span class="nav-label">After</span>
+      </div>
+      <div class="nav-item" data-slide="5" onclick="goSlide(5)">
+        <span class="nav-num">6</span>
+        <span class="nav-label">Diagnostic</span>
+      </div>
+  </nav>
+
+  <!-- Slides -->
+  <div class="slide-area">
+
+    <!-- Slide 1: Hero -->
+    <div class="slide active" id="slide-0">
+      <div class="quote">
+        L&rsquo;esprit n&rsquo;est vrai que lorsqu&rsquo;il manifeste sa pr&eacute;sence, et dans le mot <em>manifester</em> il y a <em>main</em>.
+      </div>
+      <div class="attribution">Denis de Rougemont, <em>Penser avec les mains</em> (1936)<br>cited by Jean-Luc Godard, <em>Histoire(s) du cin&eacute;ma</em></div>
+      <h1>CCAI Workshop Preflight Guide</h1>
+      <p class="subtitle">A ComfyUI image-generation workshop for six students begins tomorrow. Five things need attention tonight. This guide walks through the triage, the decisions, and the diagnostic steps.</p>
+    </div>
+
+    <!-- Slide 2: Triage -->
+    <div class="slide" id="slide-1">
+      <h2>Triage: what must work by morning</h2>
+    <div class="divider"></div>
+    <ol class="priorities">
+      <li>
+        <span class="num">1</span>
+        <div>
+          <div class="label">Dependency error on custom node</div>
+          <div class="detail">Blocks the entire workflow &mdash; fix this first, replicate across all machines</div>
+        </div>
+      </li>
+      <li>
+        <span class="num">2</span>
+        <div>
+          <div class="label">VRAM exceeded under current configuration</div>
+          <div class="detail">Blocks LoRA training &mdash; scale down for teaching without losing the learning</div>
+        </div>
+      </li>
+      <li>
+        <span class="num">3</span>
+        <div>
+          <div class="label">Model licence and data provenance unclear</div>
+          <div class="detail">Must be decided before the session, not during it</div>
+        </div>
+      </li>
+      <li>
+        <span class="num">4</span>
+        <div>
+          <div class="label">Students with limited CLI and node-graph experience</div>
+          <div class="detail">Shapes preparation &mdash; handout, pre-loaded workflow, guided walkthrough</div>
+        </div>
+      </li>
+      <li>
+        <span class="num">5</span>
+        <div>
+          <div class="label">Documentation and future-proofing</div>
+          <div class="detail">What happens after &mdash; so this doesn't recur</div>
+        </div>
+      </li>
+    </ol>
+    </div>
+
+    <!-- Slide 3: Provenance + LoRA image -->
+    <div class="slide" id="slide-2">
+      <h2>Model provenance: a decision, not a checkbox</h2>
+    <div class="divider"></div>
+    <p>The Centre treats licensing, copyright, data provenance, bias, and sustainability as central to its work. This isn't compliance &mdash; it's pedagogy. Two real Hugging Face model cards illustrate the difference:</p>
+
+    <div class="card-compare">
+      <div class="model-card good">
+        <div class="card-title">&#10003; CLEAR-Global / Kanuri TTS</div>
+        <div class="card-row"><span class="card-key">Licence</span><span class="card-val present">Documented</span></div>
+        <div class="card-row"><span class="card-key">Training data</span><span class="card-val present">10 hrs, source named</span></div>
+        <div class="card-row"><span class="card-key">Consent</span><span class="card-val present">Explicitly stated</span></div>
+        <div class="card-row"><span class="card-key">Ethics</span><span class="card-val present">Section included</span></div>
+        <div class="card-row"><span class="card-key">Limitations</span><span class="card-val present">Documented</span></div>
+        <div class="card-source">CLEAR-Global/TWB-Voice-Kanuri-TTS-1.0</div>
+      </div>
+      <div class="model-card bad">
+        <div class="card-title">&#10007; SatiricalGuru / Trump voice clone</div>
+        <div class="card-row"><span class="card-key">Licence</span><span class="card-val warning">MIT (code only)</span></div>
+        <div class="card-row"><span class="card-key">Training data</span><span class="card-val absent">Not documented</span></div>
+        <div class="card-row"><span class="card-key">Consent</span><span class="card-val absent">None &mdash; cloned voice</span></div>
+        <div class="card-row"><span class="card-key">Ethics</span><span class="card-val absent">None</span></div>
+        <div class="card-row"><span class="card-key">Limitations</span><span class="card-val absent">Not discussed</span></div>
+        <div class="card-source">SatiricalGuru/beatrice-voice-models</div>
+      </div>
+    </div>
+
+    <p class="dim">Both are downloadable in thirty seconds. The difference is whether you can assess what you're using before you use it.</p>
+
+    <ul class="checklist">
+      <li>If the licence or training data is unclear, flag it to the academic &mdash; suggest a well-documented alternative</li>
+      <li>Make the decision visible to students: understanding where a model comes from is part of working with AI critically</li>
+      <li>Provenance extends to the platform too &mdash; the July 2026 Hugging Face breach by an autonomous AI agent shows supply-chain security matters</li>
+    </ul>
+      
+    <div class="divider" style="margin-top:2rem;"></div>
+    <h3 style="color:var(--accent);font-size:1rem;margin:1rem 0 0.5rem;">From provenance to practice: building a training set</h3>
+    <p class="dim" style="font-size:0.8rem;margin-bottom:0.5rem;">20 images of draped fabric from the Metropolitan Museum of Art &mdash; all public domain, all with full provenance. This is the training set for the LoRA below.</p>
+    <div style="margin:0.5rem 0;border-radius:8px;overflow:hidden;border:1px solid var(--accent-dim);max-width:100%;">
+      <img src="assets/images/met-drapery-training-set.png" alt="20 training images from the Met collection — draped garments and sculptural fabric, all public domain" style="width:100%;display:block;"/>
+    </div>
+    <p class="dim" style="margin-top:0.5rem;font-size:0.75rem;">Source: Metropolitan Museum of Art Open Access. Every image carries full catalogue metadata: date, medium, accession number, rights status.</p>
+
+    <div class="divider" style="margin-top:2rem;"></div>
+    <h3 style="color:var(--accent);font-size:1rem;margin:1rem 0 0.5rem;">What a LoRA training run looks like</h3>
+    <div style="margin:0.5rem 0;border-radius:8px;overflow:hidden;border:1px solid var(--accent-dim);max-width:100%;">
+      <img src="assets/images/lora-training-progression.png" alt="Revolutionary Drapery — LoRA training progression" style="width:100%;display:block;"/>
+    </div>
+    <p class="dim" style="margin-top:0.5rem;font-size:0.75rem;">SDXL + custom LoRA on drapery imagery. Columns: training progression (base &rarr; 100 &rarr; 300 &rarr; 500 steps); rows: three prompt contexts (body, cloth, space) at controlled seeds.</p>
+
+    </div>
+
+    <!-- Slide 4: Support -->
+    <div class="slide" id="slide-3">
+      <h2>Supporting the academic and students</h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div>
+        <div class="col-label">Before the session</div>
+        <div class="col-content">
+          Brief the academic on what changed overnight and any constraints. Check accessibility: is the lab provisioned for students with specific needs &mdash; screen magnification, adjustable seating, keyboard navigation, sufficient contrast in the ComfyUI interface? Ask the academic in advance. Prepare a one-page quick-reference. Pre-load the workflow as a saved <code>.json</code> &mdash; students load, examine, and modify rather than build from zero. Create a known-good checkpoint they can always reload.
+        </div>
+      </div>
+      <div>
+        <div class="col-label">During the session</div>
+        <div class="col-content">
+          Be present in the room, not behind a screen. Suggest a guided walkthrough before anyone touches a keyboard. Pair experienced students with less experienced ones. Watch for the moment confusion becomes frustration &mdash; that's when to step in, not before.
+        </div>
+      </div>
+    </div>
+    <p class="dim">Lower the threshold of entry without lowering the ceiling of what's possible.</p>
+    </div>
+
+    <!-- Slide 5: After -->
+    <div class="slide" id="slide-4">
+      <h2>After the workshop</h2>
+    <div class="divider"></div>
+    <div class="two-col">
+      <div>
+        <div class="col-label">Document the configuration</div>
+        <div class="col-content">
+          Exact Python environment, CUDA version, custom node versions, ComfyUI commit hash, model files and checksums. A reproducible setup script or lockfile. A pre-session checklist &mdash; a runbook anyone can follow to verify workstations before the next workshop.
+        </div>
+      </div>
+      <div>
+        <div class="col-label">Build the library</div>
+        <div class="col-content">
+          Log the licensing decision and reasoning. Feed back to the academic: what worked, what to adjust. Start building a library of tested, documented workflows that academics can book with confidence &mdash; and a guide for students on continuing with cloud GPU resources after the course.
+        </div>
+      </div>
+    </div>
+    </div>
+
+    <!-- Slide 6: Diagnostic flowchart -->
+    <div class="slide" id="slide-5">
+      <h2>Workshop preflight diagnostic</h2>
+    <div class="divider"></div>
+    <p>Hover or tap each node for the terminal commands, expected outputs, and practical actions.</p>
+
+    <div class="flow-wrap" id="flowWrap">
+      <svg class="flow-svg" viewBox="-70 0 940 520" xmlns="http://www.w3.org/2000/svg">
+        <defs>
+          <marker id="arrowhead" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#9a9590"/>
+          </marker>
+          <marker id="arrowOk" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#4caf50"/>
+          </marker>
+          <marker id="arrowFail" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#e74c3c"/>
+          </marker>
+          <marker id="arrowWarn" markerWidth="8" markerHeight="6" refX="8" refY="3" orient="auto">
+            <polygon points="0 0, 8 3, 0 6" fill="#ff9800"/>
+          </marker>
+        </defs>
+
+        <!-- Workshop preflight -->
+        <g class="node-box" data-tip="preflight">
+          <rect class="node-rect" x="340" y="10" width="180" height="36" fill="#2a2a30" stroke="#c4a882" stroke-width="1.5"/>
+          <text x="430" y="33" text-anchor="middle">Workshop preflight</text>
+        </g>
+
+        <path class="edge" d="M430,46 L430,72" marker-end="url(#arrowhead)"/>
+
+        <!-- Local GPU ready? -->
+        <g class="node-box" data-tip="gpucheck">
+          <polygon points="430,75 520,105 430,135 340,105" fill="#2a2a30" stroke="#c4a882" stroke-width="1.5"/>
+          <text x="430" y="109" text-anchor="middle">Local GPU ready?</text>
+        </g>
+
+        <path class="edge edge-ok" d="M430,135 L430,168" marker-end="url(#arrowOk)"/>
+        <text class="edge-label" x="442" y="155">Yes</text>
+
+        <path class="edge edge-fail" d="M340,105 L197,105 Q185,105 185,117 L185,168" marker-end="url(#arrowFail)"/>
+        <text class="edge-label" x="250" y="98">No</text>
+
+        <!-- Run local -->
+        <g class="node-box" data-tip="runlocal">
+          <rect class="node-rect" x="330" y="170" width="200" height="36" fill="#2a2a30" stroke="#4caf50" stroke-width="1.5"/>
+          <text x="430" y="193" text-anchor="middle">Run local ComfyUI workflow</text>
+        </g>
+
+        <path class="edge" d="M430,206 L430,242" marker-end="url(#arrowhead)"/>
+
+        <!-- VRAM OK? -->
+        <g class="node-box" data-tip="vramcheck">
+          <polygon points="430,245 520,275 430,305 340,275" fill="#2a2a30" stroke="#c4a882" stroke-width="1.5"/>
+          <text x="430" y="272" text-anchor="middle">VRAM sufficient</text>
+          <text x="430" y="284" text-anchor="middle">for LoRA?</text>
+        </g>
+
+        <path class="edge edge-ok" d="M430,305 L430,395" marker-end="url(#arrowOk)"/>
+        <text class="edge-label" x="442" y="345">Yes</text>
+
+        <path class="edge edge-warn" d="M520,275 L638,275 Q650,275 650,287 L650,330" marker-end="url(#arrowWarn)"/>
+        <text class="edge-label" x="575" y="268">No &mdash; squeeze</text>
+
+        <!-- VRAM mitigations -->
+        <g class="node-box" data-tip="vramfix">
+          <rect class="node-rect" x="565" y="332" width="170" height="50" fill="#2a2a30" stroke="#d4b06b" stroke-width="1.5"/>
+          <text x="650" y="352" text-anchor="middle">Scale down:</text>
+          <text x="650" y="365" text-anchor="middle">512&times;512 &middot; batch 1</text>
+          <text x="650" y="378" text-anchor="middle">--lowvram &middot; 8-bit quant</text>
+        </g>
+
+        <path class="edge edge-ok" d="M650,382 L650,398 Q650,410 638,410 L530,410" marker-end="url(#arrowOk)"/>
+
+        <!-- Students explore -->
+        <g class="node-box" data-tip="explore">
+          <rect class="node-rect" x="330" y="397" width="200" height="36" fill="#2a2a30" stroke="#4caf50" stroke-width="1.5"/>
+          <text x="430" y="420" text-anchor="middle" style="font-weight:500;fill:#4caf50">Students explore &amp; experiment</text>
+        </g>
+
+        <!-- Cloud GPU? -->
+        <g class="node-box" data-tip="cloudcheck">
+          <polygon points="185,170 275,200 185,230 95,200" fill="#2a2a30" stroke="#c4a882" stroke-width="1.5"/>
+          <text x="185" y="197" text-anchor="middle">Approved cloud</text>
+          <text x="185" y="209" text-anchor="middle">GPU available?</text>
+        </g>
+
+        <path class="edge edge-ok" d="M185,230 L185,275" marker-end="url(#arrowOk)"/>
+        <text class="edge-label" x="197" y="255">Yes</text>
+
+        <path class="edge edge-fail" d="M95,200 L52,200 Q40,200 40,212 L40,275" marker-end="url(#arrowFail)"/>
+        <text class="edge-label" x="58" y="193">No</text>
+
+        <!-- Cloud env -->
+        <g class="node-box" data-tip="cloud">
+          <rect class="node-rect" x="100" y="277" width="170" height="36" fill="#2a2a30" stroke="#4caf50" stroke-width="1.5"/>
+          <text x="185" y="300" text-anchor="middle">Load cloud environment</text>
+        </g>
+
+        <path class="edge edge-ok" d="M185,313 L185,398 Q185,410 197,410 L330,410" marker-end="url(#arrowOk)"/>
+
+        <!-- Offline -->
+        <g class="node-box" data-tip="offline">
+          <rect class="node-rect" x="-40" y="277" width="160" height="50" fill="#2a2a30" stroke="#9a9590" stroke-width="1.5"/>
+          <text x="40" y="300" text-anchor="middle">Offline prepared</text>
+          <text x="40" y="315" text-anchor="middle">examples &amp; exercises</text>
+        </g>
+
+        <path class="edge" d="M40,327 L40,397" marker-end="url(#arrowhead)"/>
+
+        <!-- Continue learning -->
+        <g class="node-box" data-tip="offlinelearn">
+          <rect class="node-rect" x="-50" y="397" width="180" height="36" fill="#2a2a30" stroke="#9a9590" stroke-width="1.5"/>
+          <text x="40" y="419" text-anchor="middle">Continue learning</text>
+        </g>
+
+        <text x="430" y="475" text-anchor="middle" style="font-family:'EB Garamond',serif;font-size:14px;fill:#c4a882;font-style:italic">Penser avec les mains</text>
+        <text x="430" y="500" text-anchor="middle" class="small">Reliable tools &middot; clear provenance &middot; someone in the room who understands both</text>
+      </svg>
+
+      <!-- Tooltips -->
+      <div class="flow-tip" id="tip-preflight">
+        <div class="tip-title">Preflight check &mdash; the evening before</div>
+        Run the full diagnostic on every machine. Never assume last week's setup still works &mdash; model updates, driver patches and custom node changes break things silently.
+        <div class="tip-note">One golden config &rarr; replicate across all 6 machines.</div>
+      </div>
+      <div class="flow-tip" id="tip-gpucheck">
+        <div class="tip-title">Is the GPU visible?</div>
+        <div class="tip-term">
+          <div class="tip-cmd">nvidia-smi --query-gpu=name,memory.total,driver_version --format=csv,noheader</div>
+          <div class="tip-out-ok">NVIDIA RTX 4090, 24576 MiB, 550.54</div>
+        </div>
+        <div class="tip-term">
+          <div class="tip-cmd">python3 -c "import torch; print(torch.cuda.is_available(), torch.cuda.get_device_name(0))"</div>
+          <div class="tip-out-ok">True NVIDIA RTX 4090</div>
+        </div>
+        <div class="tip-note">If either fails &rarr; driver mismatch or wrong PyTorch build installed.</div>
+      </div>
+      <div class="flow-tip" id="tip-runlocal">
+        <div class="tip-title">Launch ComfyUI and test the workflow</div>
+        <div class="tip-term">
+          <div class="tip-cmd">cd /opt/ComfyUI && python3 main.py</div>
+          <div class="tip-out-ok">Starting server on http://127.0.0.1:8188</div>
+          <div class="tip-out-warn">&#9888; Import failed for custom node 'ComfyUI-LoRA-Training'</div>
+          <div class="tip-out-fail">ModuleNotFoundError: No module named 'bitsandbytes'</div>
+        </div>
+        <div class="tip-term">
+          <div class="tip-cmd">pip install bitsandbytes</div>
+          <div class="tip-out-ok">Successfully installed bitsandbytes-0.43.1</div>
+        </div>
+        <div class="tip-note">The traceback names the package. Fix it, then load the workshop .json and test end to end.</div>
+      </div>
+      <div class="flow-tip" id="tip-vramcheck">
+        <div class="tip-title">VRAM check during LoRA training</div>
+        <div class="tip-term">
+          <div class="tip-cmd">nvidia-smi</div>
+          <div class="tip-out-ok">GPU Memory Used: 14,230 MiB / 24,576 MiB &#10003;</div>
+          <div style="color:#555;margin:0.2rem 0">&mdash; or &mdash;</div>
+          <div class="tip-out-fail">GPU Memory Used: 23,890 MiB / 24,576 MiB</div>
+          <div class="tip-out-fail">CUDA out of memory &#10007;</div>
+        </div>
+        <div class="tip-note">If >95% or OOM &rarr; take the squeeze path.</div>
+      </div>
+      <div class="flow-tip" id="tip-vramfix">
+        <div class="tip-title">VRAM squeeze &mdash; mitigations</div>
+        <div class="tip-term">
+          <div class="tip-cmd">python3 main.py --lowvram</div>
+          <div class="tip-out-warn">&rarr; Resolution: 1024&rarr;512</div>
+          <div class="tip-out-warn">&rarr; Batch size: 4&rarr;1</div>
+          <div class="tip-out-warn">&rarr; Enable 8-bit quant (bitsandbytes)</div>
+          <div class="tip-out-warn">&rarr; Kill background GPU processes</div>
+        </div>
+        <div class="tip-term">
+          <div class="tip-cmd">nvidia-smi</div>
+          <div class="tip-out-ok">GPU Memory Used: 11,420 MiB / 24,576 MiB &#10003;</div>
+        </div>
+        <div class="tip-note">The learning objective is the workflow &mdash; scale down aggressively.</div>
+      </div>
+      <div class="flow-tip" id="tip-explore">
+        <div class="tip-title">Students explore and experiment</div>
+        <div class="tip-term">
+          <div class="tip-out-ok">&rarr; Pre-loaded workflow .json</div>
+          <div class="tip-out-ok">&rarr; Known-good checkpoint to reload</div>
+          <div class="tip-out-ok">&rarr; Pair experienced with beginners</div>
+          <div class="tip-out-ok">&rarr; One-page quick-reference handout</div>
+        </div>
+        <div class="tip-note">Be present. Watch for when confusion becomes frustration.</div>
+      </div>
+      <div class="flow-tip" id="tip-cloudcheck">
+        <div class="tip-title">Cloud GPU &mdash; pre-approved fallback</div>
+        Must be set up in advance:
+        <div class="tip-term">
+          <div class="tip-out-warn">&rarr; Procurement and budget signed off</div>
+          <div class="tip-out-warn">&rarr; Data handling / GDPR assessed</div>
+          <div class="tip-out-warn">&rarr; Environment pre-tested with exact workflow</div>
+          <div class="tip-out-warn">&rarr; Check institutional agreements (Azure, JADE)</div>
+        </div>
+      </div>
+      <div class="flow-tip" id="tip-cloud">
+        <div class="tip-title">Cloud environment</div>
+        Pre-built ComfyUI Docker image on rented GPU. Students connect via browser.
+        <div class="tip-term">
+          <div class="tip-out-ok">RTX 4090 24 GB &asymp; &pound;0.25&ndash;0.40/hr</div>
+          <div class="tip-out-ok">3-hour workshop, 6 students &lt; &pound;10 total</div>
+        </div>
+        <div class="tip-note">Also a lesson: cloud GPU rental means the workshop doesn't stop at the lab door.</div>
+      </div>
+      <div class="flow-tip" id="tip-offline">
+        <div class="tip-title">Offline fallback &mdash; no GPU, no internet</div>
+        <div class="tip-term">
+          <div class="tip-out">&rarr; Pre-rendered outputs showing each pipeline stage</div>
+          <div class="tip-out">&rarr; Workflow exercises without running inference</div>
+          <div class="tip-out">&rarr; Annotated screenshots of the interface</div>
+        </div>
+        <div class="tip-note">Three levels deep. The students still learn.</div>
+      </div>
+      <div class="flow-tip" id="tip-offlinelearn">
+        <div class="tip-title">Learning continues</div>
+        Students understand the workflow, node structure, and decision-making &mdash; even without live generation. Point them to cloud GPU options for practice after the session.
+        <div class="tip-note">Document everything &rarr; build a library of tested workflows.</div>
+      </div>
+    </div>
+    <p class="flow-hint">Hover or tap each node for practical actions</p>
+      <div class="closing" style="margin-top:2rem;"><em>Penser avec les mains</em></div>
+      <div class="closing-sub">CCAI Workshop Preflight Guide &middot; Birkbeck Centre for Creative AI</div>
+    </div>
+
+  </div><!-- /slide-area -->
+</div><!-- /deck -->
+
+<!-- Navigation arrows -->
+<button class="arrow left hidden" id="arrowLeft" onclick="prevSlide()">&larr;</button>
+<button class="arrow right" id="arrowRight" onclick="nextSlide()">&rarr;</button>
+<div class="slide-counter" id="counter">1 / 6</div>
+
+<script src="js/presentation.js"></script>
+</body>
+</html>
