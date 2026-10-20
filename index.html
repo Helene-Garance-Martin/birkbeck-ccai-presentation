@@ -284,7 +284,10 @@
               <div class="col-content">
                 <ul>
                   <li>Brief the academic on changes and constraints.</li>
-                  <li>Check accessibility needs and workstation provision.</li>
+                  <li>
+                    Check accessibility needs: seating, screen magnification,
+                    input devices and familiarity with the lab interface.
+                  </li>
                   <li>
                     Prepare a quick-reference handout, a pre-loaded workflow and
                     a known-good checkpoint.
@@ -861,52 +864,90 @@
 
           <p class="flow-hint">Hover or tap each node for practical actions</p>
         </div>
+<!-- Slide 6: Met dataset -->
+<div class="slide image-slide" id="slide-5">
+  <h2>From provenance to practice: curating a dataset</h2>
+  <div class="divider"></div>
 
-        <!-- Slide 6: Met dataset -->
-        <div class="slide image-slide" id="slide-5">
-          <h2>From provenance to practice: curating a dataset</h2>
-          <div class="divider"></div>
+  <div class="visual-layout">
+    <figure class="visual-frame">
+      <img
+        src="assets/images/met-drapery-training-set.png"
+        alt="Twenty public-domain works from the Met collection,
+             including sculpture, garments and fabric studies"
+      />
+    </figure>
 
-          <p class="dim">
-            Twenty public-domain images from the Metropolitan Museum of Art:
-            draped garments, sculptural fabric and movement.
-          </p>
+    <div class="visual-notes">
+      <h3>Curatorial judgement becomes training data</h3>
 
-          <img
-            class="slide-image"
-            src="assets/images/met-drapery-training-set.png"
-            alt="Twenty public-domain training images from the Met collection"
-          />
+      <p>
+        A deliberately heterogeneous corpus of 20 public-domain
+        works from The Metropolitan Museum of Art Open Access
+        collection.
+      </p>
 
-          <p class="image-caption">
-            Metropolitan Museum of Art Open Access. Catalogue metadata and
-            rights information accompany each image.
-          </p>
-        </div>
+      <p>
+        Sculpture, garments and images of fabric bring different
+        materials and historical contexts into the experiment.
+      </p>
 
-        <!-- Slide 7: LoRA results -->
-        <div class="slide image-slide" id="slide-6">
-          <h2>Revolutionary Drapery: a LoRA experiment</h2>
-          <div class="divider"></div>
-
-          <p class="dim">
-            Comparing the base model with successive training checkpoints.
-          </p>
-
-          <img
-            class="slide-image"
-            src="assets/images/lora-training-progression.png"
-            alt="Revolutionary Drapery: base model and LoRA training progression"
-          />
-
-          <p class="image-caption">
-            SDXL &middot; base &rarr; 100 &rarr; 300 &rarr; 500 training steps.
-            Three prompt contexts: body, cloth and space, with controlled seeds.
-          </p>
-        </div>
-      </div>
-      <!-- /slide-area -->
+      <ul>
+        <li>Selected around drapery, folds and movement</li>
+        <li>Catalogue metadata retained</li>
+        <li>Rights status recorded for each work</li>
+      </ul>
     </div>
+  </div>
+
+  <p class="image-caption">
+    Source: The Metropolitan Museum of Art Open Access.
+  </p>
+</div>
+
+<!-- Slide 7: LoRA results -->
+<div class="slide image-slide" id="slide-6">
+  <h2>Revolutionary Drapery: a LoRA experiment</h2>
+  <div class="divider"></div>
+
+  <div class="visual-layout">
+    <figure class="visual-frame">
+      <img
+        src="assets/images/lora-training-progression.png"
+        alt="Comparison of the base model and LoRA checkpoints
+             at 100, 300 and 500 steps, across body, cloth and space"
+      />
+    </figure>
+
+    <div class="visual-notes">
+      <h3>Adapting an existing model</h3>
+
+      <p>
+        SDXL adapted using Hugging Face PEFT (LoRA), trained
+        on 20 public-domain images using an NVIDIA RTX 3090
+        rented through Vast.ai.
+      </p>
+
+      <p>
+        Small adapters are trained while the base model’s
+        weights remain frozen.
+      </p>
+
+      <ul>
+        <li>Resolution: 1024 × 1024</li>
+        <li>LoRA rank: 8 · training steps: 500</li>
+        <li>Batch size: 1 · gradient accumulation: 4</li>
+        <li>FP16 · gradient checkpointing enabled</li>
+      </ul>
+    </div>
+  </div>
+
+  <p class="image-caption">
+    Columns: base → 100 → 300 → 500 steps.
+    Rows: body, cloth and space.
+    Each row uses the same prompt and seed across checkpoints.
+  </p>
+</div>
     <!-- /deck -->
 
     <!-- Navigation arrows -->
