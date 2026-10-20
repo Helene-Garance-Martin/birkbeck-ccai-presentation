@@ -37,6 +37,16 @@
         font-size: 0.75rem;
         line-height: 1.5;
       }
+
+      .flow-svg .edge-conditional {
+        stroke: #c99536;
+        stroke-width: 2;
+        stroke-dasharray: 7 5;
+      }
+
+      .flow-svg .edge-label-conditional {
+        fill: #c99536 !important;
+      }
     </style>
   </head>
 
@@ -106,260 +116,258 @@
 
         <!-- Slide 2: Triage -->
         <div class="slide triage-slide" id="slide-1">
-  <h2>Triage: what must work by morning</h2>
+          <h2>Triage: what must work by morning</h2>
 
-  <ul class="triage-checklist">
-    <li>
-      <span class="triage-tick" aria-hidden="true">✓</span>
-      <div>
-        <h3>Resolve the custom-node dependency error</h3>
-        <p>
-          Unblock the workflow first, then replicate the tested fix
-          across all machines.
-        </p>
-      </div>
-    </li>
+          <ul class="triage-checklist">
+            <li>
+              <span class="triage-tick" aria-hidden="true">✓</span>
+              <div>
+                <h3>Resolve the custom-node dependency error</h3>
+                <p>
+                  Unblock the workflow first, then replicate the tested fix
+                  across all machines.
+                </p>
+              </div>
+            </li>
 
-    <li>
-      <span class="triage-tick" aria-hidden="true">✓</span>
-      <div>
-        <h3>Fit the training workflow within available VRAM</h3>
-        <p>
-          Scale down for teaching while preserving the learning objective.
-        </p>
-      </div>
-    </li>
+            <li>
+              <span class="triage-tick" aria-hidden="true">✓</span>
+              <div>
+                <h3>Fit the training workflow within available VRAM</h3>
+                <p>
+                  Scale down for teaching while preserving the learning
+                  objective.
+                </p>
+              </div>
+            </li>
 
-    <li>
-      <span class="triage-tick" aria-hidden="true">✓</span>
-      <div>
-        <h3>Clarify model licensing and data provenance</h3>
-        <p>
-          Agree an appropriate model before the session begins.
-        </p>
-      </div>
-    </li>
+            <li>
+              <span class="triage-tick" aria-hidden="true">✓</span>
+              <div>
+                <h3>Clarify model licensing and data provenance</h3>
+                <p>Agree an appropriate model before the session begins.</p>
+              </div>
+            </li>
 
-    <li>
-      <span class="triage-tick" aria-hidden="true">✓</span>
-      <div>
-        <h3>Prepare for different levels of technical experience</h3>
-        <p>
-          Provide a handout, a preloaded workflow and a guided
-          walkthrough; check accessibility needs.
-        </p>
-      </div>
-    </li>
+            <li>
+              <span class="triage-tick" aria-hidden="true">✓</span>
+              <div>
+                <h3>Prepare for different levels of technical experience</h3>
+                <p>
+                  Provide a handout, a preloaded workflow and a guided
+                  walkthrough; check accessibility needs.
+                </p>
+              </div>
+            </li>
 
-    <li>
-      <span class="triage-tick" aria-hidden="true">✓</span>
-      <div>
-        <h3>Document a repeatable setup</h3>
-        <p>
-          Record versions, fixes and recovery steps for the next workshop.
-        </p>
-      </div>
-    </li>
-  </ul>
-</div>
+            <li>
+              <span class="triage-tick" aria-hidden="true">✓</span>
+              <div>
+                <h3>Document a repeatable setup</h3>
+                <p>
+                  Record versions, fixes and recovery steps for the next
+                  workshop.
+                </p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Slide 3: Provenance -->
         <div class="slide provenance-slide" id="slide-2">
-  <h2>Model provenance: a decision, not a checkbox</h2>
+          <h2>Model provenance: a decision, not a checkbox</h2>
 
-  <p class="provenance-intro">
-    Before a workshop, I check what a model’s documentation allows us
-    to understand—and what still needs questioning.
-  </p>
+          <p class="provenance-intro">
+            Before a workshop, I check what a model’s documentation allows us to
+            understand—and what still needs questioning.
+          </p>
 
-  <div class="provenance-cards">
-    <article class="provenance-card provenance-documented">
-      <header class="provenance-card-header">
-        <img
-          class="provenance-logo"
-          src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-          width="40"
-          height="40"
-          alt=""
-        />
-        <div>
-          <span class="provenance-owner">CLEAR-Global</span>
-          <h3>Kanuri text-to-speech</h3>
-        </div>
-      </header>
+          <div class="provenance-cards">
+            <article class="provenance-card provenance-documented">
+              <header class="provenance-card-header">
+                <img
+                  class="provenance-logo"
+                  src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                  width="40"
+                  height="40"
+                  alt=""
+                />
+                <div>
+                  <span class="provenance-owner">CLEAR-Global</span>
+                  <h3>Kanuri text-to-speech</h3>
+                </div>
+              </header>
 
-      <span class="provenance-status">Documentation present</span>
+              <span class="provenance-status">Documentation present</span>
 
-      <dl class="provenance-details">
-        <div>
-          <dt>Licence</dt>
-          <dd>CC BY-NC 4.0 · noncommercial</dd>
-        </div>
-        <div>
-          <dt>Training data</dt>
-          <dd>Approximately 10 hours; source named</dd>
-        </div>
-        <div>
-          <dt>Permissions</dt>
-          <dd>Appropriate permissions stated</dd>
-        </div>
-        <div>
-          <dt>Ethics</dt>
-          <dd>Consent and bias addressed</dd>
-        </div>
-        <div>
-          <dt>Limitations</dt>
-          <dd>Language and speaker constraints stated</dd>
-        </div>
-      </dl>
+              <dl class="provenance-details">
+                <div>
+                  <dt>Licence</dt>
+                  <dd>CC BY-NC 4.0 · noncommercial</dd>
+                </div>
+                <div>
+                  <dt>Training data</dt>
+                  <dd>Approximately 10 hours; source named</dd>
+                </div>
+                <div>
+                  <dt>Permissions</dt>
+                  <dd>Appropriate permissions stated</dd>
+                </div>
+                <div>
+                  <dt>Ethics</dt>
+                  <dd>Consent and bias addressed</dd>
+                </div>
+                <div>
+                  <dt>Limitations</dt>
+                  <dd>Language and speaker constraints stated</dd>
+                </div>
+              </dl>
 
-      <a
-        class="provenance-link"
-        href="https://huggingface.co/CLEAR-Global/TWB-Voice-Kanuri-TTS-1.0"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Read the model card ↗
-      </a>
-    </article>
+              <a
+                class="provenance-link"
+                href="https://huggingface.co/CLEAR-Global/TWB-Voice-Kanuri-TTS-1.0"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read the model card ↗
+              </a>
+            </article>
 
-    <article class="provenance-card provenance-unresolved">
-      <header class="provenance-card-header">
-        <img
-          class="provenance-logo"
-          src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
-          width="40"
-          height="40"
-          alt=""
-        />
-        <div>
-          <span class="provenance-owner">SatiricalGuru</span>
-          <h3>Trump voice clone</h3>
-        </div>
-      </header>
+            <article class="provenance-card provenance-unresolved">
+              <header class="provenance-card-header">
+                <img
+                  class="provenance-logo"
+                  src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+                  width="40"
+                  height="40"
+                  alt=""
+                />
+                <div>
+                  <span class="provenance-owner">SatiricalGuru</span>
+                  <h3>Trump voice clone</h3>
+                </div>
+              </header>
 
-      <span class="provenance-status">Questions unresolved</span>
+              <span class="provenance-status">Questions unresolved</span>
 
-      <dl class="provenance-details">
-        <div>
-          <dt>Licence</dt>
-          <dd>MIT listed</dd>
-        </div>
-        <div>
-          <dt>Training data</dt>
-          <dd>Provenance not documented</dd>
-        </div>
-        <div>
-          <dt>Permissions</dt>
-          <dd>Voice consent not documented</dd>
-        </div>
-        <div>
-          <dt>Ethics</dt>
-          <dd>No dedicated discussion</dd>
-        </div>
-        <div>
-          <dt>Limitations</dt>
-          <dd>No dedicated discussion</dd>
-        </div>
-      </dl>
+              <dl class="provenance-details">
+                <div>
+                  <dt>Licence</dt>
+                  <dd>MIT listed</dd>
+                </div>
+                <div>
+                  <dt>Training data</dt>
+                  <dd>Provenance not documented</dd>
+                </div>
+                <div>
+                  <dt>Permissions</dt>
+                  <dd>Voice consent not documented</dd>
+                </div>
+                <div>
+                  <dt>Ethics</dt>
+                  <dd>No dedicated discussion</dd>
+                </div>
+                <div>
+                  <dt>Limitations</dt>
+                  <dd>No dedicated discussion</dd>
+                </div>
+              </dl>
 
-      <a
-        class="provenance-link"
-        href="https://huggingface.co/SatiricalGuru/beatrice-voice-models"
-        target="_blank"
-        rel="noopener noreferrer"
-      >
-        Read the model card ↗
-      </a>
-    </article>
-  </div>
+              <a
+                class="provenance-link"
+                href="https://huggingface.co/SatiricalGuru/beatrice-voice-models"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Read the model card ↗
+              </a>
+            </article>
+          </div>
 
-  <p class="provenance-takeaway">
-    Both are easy to download.
-    <strong>Can we assess whether they are appropriate to use?</strong>
-  </p>
-</div>
+          <p class="provenance-takeaway">
+            Both are easy to download.
+            <strong>Can we assess whether they are appropriate to use?</strong>
+          </p>
+        </div>
+
         <!-- Slide 4: Workshop support -->
         <div class="slide workshop-slide" id="slide-3">
-  <h2>Before, during and after the workshop</h2>
+          <h2>Before, during and after the workshop</h2>
 
-  <div class="workshop-stages">
-    <article class="workshop-stage stage-before">
-      <header class="workshop-stage-header">
-        <span class="workshop-number" aria-hidden="true">01</span>
-        <div>
-          <span class="workshop-phase">Before</span>
-          <h3>Prepare for participation</h3>
+          <div class="workshop-stages">
+            <article class="workshop-stage stage-before">
+              <header class="workshop-stage-header">
+                <span class="workshop-number" aria-hidden="true">01</span>
+                <div>
+                  <span class="workshop-phase">Before</span>
+                  <h3>Prepare for participation</h3>
+                </div>
+              </header>
+
+              <ul>
+                <li>Brief the academic on changes and constraints.</li>
+                <li>
+                  Check accessibility: seating, screen magnification, input
+                  devices and familiarity with the lab interface.
+                </li>
+                <li>
+                  Prepare a quick-reference handout, a preloaded workflow and a
+                  tested checkpoint.
+                </li>
+              </ul>
+            </article>
+
+            <article class="workshop-stage stage-during">
+              <header class="workshop-stage-header">
+                <span class="workshop-number" aria-hidden="true">02</span>
+                <div>
+                  <span class="workshop-phase">During</span>
+                  <h3>Support exploration</h3>
+                </div>
+              </header>
+
+              <ul>
+                <li>Begin with a guided walkthrough.</li>
+                <li>
+                  Invite peer support between students with different levels of
+                  experience.
+                </li>
+                <li>
+                  Stay available and step in before confusion becomes
+                  frustration.
+                </li>
+              </ul>
+            </article>
+
+            <article class="workshop-stage stage-after">
+              <header class="workshop-stage-header">
+                <span class="workshop-number" aria-hidden="true">03</span>
+                <div>
+                  <span class="workshop-phase">After</span>
+                  <h3>Make learning reusable</h3>
+                </div>
+              </header>
+
+              <ul>
+                <li>
+                  Record the environment, versions, model checksums and
+                  licensing decisions.
+                </li>
+                <li>Gather feedback and update the runbook.</li>
+                <li>
+                  Build a library of tested workflows and guidance for
+                  independent practice.
+                </li>
+              </ul>
+            </article>
+          </div>
+
+          <p class="workshop-principle">
+            Lower the threshold of entry without lowering the ceiling of what’s
+            possible.
+          </p>
         </div>
-      </header>
 
-      <ul>
-        <li>
-          Brief the academic on changes and constraints.
-        </li>
-        <li>
-          Check accessibility: seating, screen magnification,
-          input devices and familiarity with the lab interface.
-        </li>
-        <li>
-          Prepare a quick-reference handout, a preloaded workflow
-          and a tested checkpoint.
-        </li>
-      </ul>
-    </article>
-
-    <article class="workshop-stage stage-during">
-      <header class="workshop-stage-header">
-        <span class="workshop-number" aria-hidden="true">02</span>
-        <div>
-          <span class="workshop-phase">During</span>
-          <h3>Support exploration</h3>
-        </div>
-      </header>
-
-      <ul>
-        <li>
-          Begin with a guided walkthrough.
-        </li>
-        <li>
-          Invite peer support between students with different
-          levels of experience.
-        </li>
-        <li>
-          Stay available and step in before confusion becomes
-          frustration.
-        </li>
-      </ul>
-    </article>
-
-    <article class="workshop-stage stage-after">
-      <header class="workshop-stage-header">
-        <span class="workshop-number" aria-hidden="true">03</span>
-        <div>
-          <span class="workshop-phase">After</span>
-          <h3>Make learning reusable</h3>
-        </div>
-      </header>
-
-      <ul>
-        <li>
-          Record the environment, versions, model checksums
-          and licensing decisions.
-        </li>
-        <li>
-          Gather feedback and update the runbook.
-        </li>
-        <li>
-          Build a library of tested workflows and guidance
-          for independent practice.
-        </li>
-      </ul>
-    </article>
-  </div>
-
-  <p class="workshop-principle">
-    Lower the threshold of entry without lowering
-    the ceiling of what’s possible.
-  </p>
-</div>
         <!-- Slide 5: Diagnostic flowchart -->
         <div class="slide" id="slide-4">
           <h2>Workshop preflight diagnostic</h2>
@@ -424,6 +432,18 @@
                 >
                   <path d="M0,0 L10,5 L0,10 Z" fill="#ff9800" />
                 </marker>
+
+                <marker
+                  id="arrowConditional"
+                  markerWidth="10"
+                  markerHeight="10"
+                  refX="9"
+                  refY="5"
+                  orient="auto"
+                  markerUnits="userSpaceOnUse"
+                >
+                  <path d="M0,0 L10,5 L0,10 Z" fill="#c99536" />
+                </marker>
               </defs>
 
               <!-- Connectors -->
@@ -474,11 +494,13 @@
               />
 
               <path
-                class="edge edge-ok"
+                class="edge edge-conditional"
                 d="M410,325 V400"
-                marker-end="url(#arrowOk)"
+                marker-end="url(#arrowConditional)"
               />
-              <text class="edge-label" x="424" y="365">Yes</text>
+              <text class="edge-label edge-label-conditional" x="424" y="365">
+                If approved
+              </text>
 
               <path
                 class="edge edge-fail"
@@ -621,7 +643,7 @@
                   height="70"
                   rx="6"
                   fill="#2a2a30"
-                  stroke="#4caf50"
+                  stroke="#c99536"
                   stroke-width="1.5"
                 />
                 <text x="410" y="430" text-anchor="middle">
@@ -811,46 +833,70 @@
             </div>
 
             <div class="flow-tip" id="tip-cloudcheck">
-              <div class="tip-title">
-                Cloud GPU &mdash; pre-approved fallback
-              </div>
+              <div class="tip-title">Cloud GPU — conditional fallback</div>
 
-              Must be set up in advance:
+              <p>Must be agreed and tested before the workshop:</p>
 
               <div class="tip-term">
-                <div class="tip-out-warn">
-                  &rarr; Procurement and budget signed off
-                </div>
-                <div class="tip-out-warn">
-                  &rarr; Data handling / GDPR assessed
-                </div>
-                <div class="tip-out-warn">
-                  &rarr; Environment pre-tested with exact workflow
-                </div>
-                <div class="tip-out-warn">
-                  &rarr; Check institutional agreements (Azure, JADE)
-                </div>
-              </div>
-            </div>
+                <div class="tip-out-warn">Procurement and budget approved.</div>
 
-            <div class="flow-tip" id="tip-cloud">
-              <div class="tip-title">Cloud environment</div>
-
-              Pre-built ComfyUI Docker image on rented GPU. Students connect via
-              browser.
-
-              <div class="tip-term">
-                <div class="tip-out-ok">
-                  RTX 4090 24 GB &asymp; &pound;0.25&ndash;0.40/hr
+                <div class="tip-out-warn">
+                  Data handling and institutional requirements checked.
                 </div>
-                <div class="tip-out-ok">
-                  3-hour workshop, 6 students &lt; &pound;10 total
+
+                <div class="tip-out-warn">
+                  Environment tested with the exact workshop workflow.
+                </div>
+
+                <div class="tip-out-warn">
+                  Existing institutional computing provision considered.
                 </div>
               </div>
 
               <div class="tip-note">
-                Also a lesson: cloud GPU rental means the workshop doesn't stop
-                at the lab door.
+                Use this route only when the prerequisites are met. Otherwise,
+                agree an alternative with the academic.
+              </div>
+            </div>
+
+            <div class="flow-tip" id="tip-cloud">
+              <div class="tip-title">
+                Cloud environment — optional practical
+              </div>
+
+              <p>
+                Additional GPU capacity, with an optional guided introduction to
+                remote computing.
+              </p>
+
+              <div class="tip-term">
+                <div class="tip-out-warn">
+                  Proposed allocation: $5 per student; $30 for six. Confirm GPU,
+                  storage and transfer charges.
+                </div>
+
+                <div class="tip-out-ok">
+                  Foundation: a pre-tested Docker image with ComfyUI and the
+                  required dependencies.
+                </div>
+
+                <div class="tip-out">
+                  1. Launch a GPU instance and monitor costs.
+                </div>
+
+                <div class="tip-out">
+                  2. Use the remote terminal to download, inspect and run a
+                  prepared Python script from a verified repository.
+                </div>
+
+                <div class="tip-out">
+                  3. Save and download outputs, then remove unused resources.
+                </div>
+              </div>
+
+              <div class="tip-note">
+                Teach these steps when remote computing supports the learning
+                objective. Otherwise, provide the environment ready to use.
               </div>
             </div>
 
@@ -891,90 +937,92 @@
 
           <p class="flow-hint">Hover or tap each node for practical actions</p>
         </div>
-<!-- Slide 6: Met dataset -->
-<div class="slide image-slide" id="slide-5">
-  <h2>From provenance to practice: curating a dataset</h2>
-  <div class="divider"></div>
 
-  <div class="visual-layout">
-    <figure class="visual-frame">
-      <img
-        src="assets/images/met-drapery-training-set.png"
-        alt="Twenty public-domain works from the Met collection,
-             including sculpture, garments and fabric studies"
-      />
-    </figure>
+        <!-- Slide 6: Met dataset -->
+        <div class="slide image-slide" id="slide-5">
+          <h2>From provenance to practice: curating a dataset</h2>
+          <div class="divider"></div>
 
-    <div class="visual-notes">
-      <h3>Curatorial judgement becomes training data</h3>
+          <div class="visual-layout">
+            <figure class="visual-frame">
+              <img
+                src="assets/images/met-drapery-training-set.png"
+                alt="Twenty public-domain works from the Met collection,
+                     including sculpture, garments and fabric studies"
+              />
+            </figure>
 
-      <p>
-        A deliberately heterogeneous corpus of 20 public-domain
-        works from The Metropolitan Museum of Art Open Access
-        collection.
-      </p>
+            <div class="visual-notes">
+              <h3>Curatorial judgement becomes training data</h3>
 
-      <p>
-        Sculpture, garments and images of fabric bring different
-        materials and historical contexts into the experiment.
-      </p>
+              <p>
+                A deliberately heterogeneous corpus of 20 public-domain works
+                from The Metropolitan Museum of Art Open Access collection.
+              </p>
 
-      <ul>
-        <li>Selected around drapery, folds and movement</li>
-        <li>Catalogue metadata retained</li>
-        <li>Rights status recorded for each work</li>
-      </ul>
+              <p>
+                Sculpture, garments and images of fabric bring different
+                materials and historical contexts into the experiment.
+              </p>
+
+              <ul>
+                <li>Selected around drapery, folds and movement</li>
+                <li>Catalogue metadata retained</li>
+                <li>Rights status recorded for each work</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Source: The Metropolitan Museum of Art Open Access.
+          </p>
+        </div>
+
+        <!-- Slide 7: LoRA results -->
+        <div class="slide image-slide" id="slide-6">
+          <h2>Revolutionary Drapery: a LoRA experiment</h2>
+          <div class="divider"></div>
+
+          <div class="visual-layout">
+            <figure class="visual-frame">
+              <img
+                src="assets/images/lora-training-progression.png"
+                alt="Comparison of the base model and LoRA checkpoints
+                     at 100, 300 and 500 steps, across body, cloth and space"
+              />
+            </figure>
+
+            <div class="visual-notes">
+              <h3>Adapting an existing model</h3>
+
+              <p>
+                SDXL adapted using Hugging Face PEFT (LoRA), trained on 20
+                public-domain images using an NVIDIA RTX 3090 rented through
+                Vast.ai.
+              </p>
+
+              <p>
+                Small adapters are trained while the base model’s weights remain
+                frozen.
+              </p>
+
+              <ul>
+                <li>Resolution: 1024 × 1024</li>
+                <li>LoRA rank: 8 · training steps: 500</li>
+                <li>Batch size: 1 · gradient accumulation: 4</li>
+                <li>FP16 · gradient checkpointing enabled</li>
+              </ul>
+            </div>
+          </div>
+
+          <p class="image-caption">
+            Columns: base → 100 → 300 → 500 steps. Rows: body, cloth and space.
+            Each row uses the same prompt and seed across checkpoints.
+          </p>
+        </div>
+      </div>
+      <!-- /slide-area -->
     </div>
-  </div>
-
-  <p class="image-caption">
-    Source: The Metropolitan Museum of Art Open Access.
-  </p>
-</div>
-
-<!-- Slide 7: LoRA results -->
-<div class="slide image-slide" id="slide-6">
-  <h2>Revolutionary Drapery: a LoRA experiment</h2>
-  <div class="divider"></div>
-
-  <div class="visual-layout">
-    <figure class="visual-frame">
-      <img
-        src="assets/images/lora-training-progression.png"
-        alt="Comparison of the base model and LoRA checkpoints
-             at 100, 300 and 500 steps, across body, cloth and space"
-      />
-    </figure>
-
-    <div class="visual-notes">
-      <h3>Adapting an existing model</h3>
-
-      <p>
-        SDXL adapted using Hugging Face PEFT (LoRA), trained
-        on 20 public-domain images using an NVIDIA RTX 3090
-        rented through Vast.ai.
-      </p>
-
-      <p>
-        Small adapters are trained while the base model’s
-        weights remain frozen.
-      </p>
-
-      <ul>
-        <li>Resolution: 1024 × 1024</li>
-        <li>LoRA rank: 8 · training steps: 500</li>
-        <li>Batch size: 1 · gradient accumulation: 4</li>
-        <li>FP16 · gradient checkpointing enabled</li>
-      </ul>
-    </div>
-  </div>
-
-  <p class="image-caption">
-    Columns: base → 100 → 300 → 500 steps.
-    Rows: body, cloth and space.
-    Each row uses the same prompt and seed across checkpoints.
-  </p>
-</div>
     <!-- /deck -->
 
     <!-- Navigation arrows -->
