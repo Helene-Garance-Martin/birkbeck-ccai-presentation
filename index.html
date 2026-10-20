@@ -105,234 +105,261 @@
         </div>
 
         <!-- Slide 2: Triage -->
-        <div class="slide" id="slide-1">
-          <h2>Triage: what must work by morning</h2>
-          <div class="divider"></div>
+        <div class="slide triage-slide" id="slide-1">
+  <h2>Triage: what must work by morning</h2>
 
-          <ol class="priorities">
-            <li>
-              <span class="num">1</span>
-              <div>
-                <div class="label">Dependency error on custom node</div>
-                <div class="detail">
-                  Blocks the entire workflow &mdash; fix this first, replicate
-                  across all machines
-                </div>
-              </div>
-            </li>
+  <ul class="triage-checklist">
+    <li>
+      <span class="triage-tick" aria-hidden="true">✓</span>
+      <div>
+        <h3>Resolve the custom-node dependency error</h3>
+        <p>
+          Unblock the workflow first, then replicate the tested fix
+          across all machines.
+        </p>
+      </div>
+    </li>
 
-            <li>
-              <span class="num">2</span>
-              <div>
-                <div class="label">
-                  VRAM exceeded under current configuration
-                </div>
-                <div class="detail">
-                  Blocks LoRA training &mdash; scale down for teaching without
-                  losing the learning
-                </div>
-              </div>
-            </li>
+    <li>
+      <span class="triage-tick" aria-hidden="true">✓</span>
+      <div>
+        <h3>Fit the training workflow within available VRAM</h3>
+        <p>
+          Scale down for teaching while preserving the learning objective.
+        </p>
+      </div>
+    </li>
 
-            <li>
-              <span class="num">3</span>
-              <div>
-                <div class="label">
-                  Model licence and data provenance unclear
-                </div>
-                <div class="detail">
-                  Must be decided before the session, not during it
-                </div>
-              </div>
-            </li>
+    <li>
+      <span class="triage-tick" aria-hidden="true">✓</span>
+      <div>
+        <h3>Clarify model licensing and data provenance</h3>
+        <p>
+          Agree an appropriate model before the session begins.
+        </p>
+      </div>
+    </li>
 
-            <li>
-              <span class="num">4</span>
-              <div>
-                <div class="label">
-                  Students with limited CLI and node-graph experience
-                </div>
-                <div class="detail">
-                  Shapes preparation &mdash; handout, pre-loaded workflow,
-                  guided walkthrough
-                </div>
-              </div>
-            </li>
+    <li>
+      <span class="triage-tick" aria-hidden="true">✓</span>
+      <div>
+        <h3>Prepare for different levels of technical experience</h3>
+        <p>
+          Provide a handout, a preloaded workflow and a guided
+          walkthrough; check accessibility needs.
+        </p>
+      </div>
+    </li>
 
-            <li>
-              <span class="num">5</span>
-              <div>
-                <div class="label">Documentation and future-proofing</div>
-                <div class="detail">
-                  What happens after &mdash; so this doesn't recur
-                </div>
-              </div>
-            </li>
-          </ol>
+    <li>
+      <span class="triage-tick" aria-hidden="true">✓</span>
+      <div>
+        <h3>Document a repeatable setup</h3>
+        <p>
+          Record versions, fixes and recovery steps for the next workshop.
+        </p>
+      </div>
+    </li>
+  </ul>
+</div>
+        <div class="slide provenance-slide" id="slide-2">
+  <h2>Model provenance: a decision, not a checkbox</h2>
+
+  <p class="provenance-intro">
+    Before a workshop, I check what a model’s documentation allows us
+    to understand—and what still needs questioning.
+  </p>
+
+  <div class="provenance-cards">
+    <article class="provenance-card provenance-documented">
+      <header class="provenance-card-header">
+        <img
+          class="provenance-logo"
+          src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+          width="40"
+          height="40"
+          alt=""
+        />
+        <div>
+          <span class="provenance-owner">CLEAR-Global</span>
+          <h3>Kanuri text-to-speech</h3>
         </div>
+      </header>
 
-        <!-- Slide 3: Model provenance -->
-        <div class="slide" id="slide-2">
-          <h2>Model provenance: a decision, not a checkbox</h2>
-          <div class="divider"></div>
+      <span class="provenance-status">Documentation present</span>
 
-          <p>
-            The Centre treats licensing, copyright, data provenance, bias, and
-            sustainability as central to its work. This isn't compliance &mdash;
-            it's pedagogy. Two real Hugging Face model cards illustrate the
-            difference:
-          </p>
-
-          <div class="card-compare">
-            <div class="model-card good">
-              <div class="card-title">&#10003; CLEAR-Global / Kanuri TTS</div>
-
-              <div class="card-row">
-                <span class="card-key">Licence</span>
-                <span class="card-val present">Documented</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Training data</span>
-                <span class="card-val present">10 hrs, source named</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Consent</span>
-                <span class="card-val present">Explicitly stated</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Ethics</span>
-                <span class="card-val present">Section included</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Limitations</span>
-                <span class="card-val present">Documented</span>
-              </div>
-
-              <div class="card-source">
-                CLEAR-Global/TWB-Voice-Kanuri-TTS-1.0
-              </div>
-            </div>
-
-            <div class="model-card bad">
-              <div class="card-title">
-                &#10007; SatiricalGuru / Trump voice clone
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Licence</span>
-                <span class="card-val warning">MIT (code only)</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Training data</span>
-                <span class="card-val absent">Not documented</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Consent</span>
-                <span class="card-val absent">None &mdash; cloned voice</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Ethics</span>
-                <span class="card-val absent">None</span>
-              </div>
-
-              <div class="card-row">
-                <span class="card-key">Limitations</span>
-                <span class="card-val absent">Not discussed</span>
-              </div>
-
-              <div class="card-source">SatiricalGuru/beatrice-voice-models</div>
-            </div>
-          </div>
-
-          <p class="dim">
-            Both are downloadable in thirty seconds. The difference is whether
-            you can assess what you're using before you use it.
-          </p>
-
-          <ul class="checklist">
-            <li>
-              If the licence or training data is unclear, flag it to the
-              academic &mdash; suggest a well-documented alternative
-            </li>
-            <li>
-              Make the decision visible to students: understanding where a model
-              comes from is part of working with AI critically
-            </li>
-            <li>
-              Provenance extends to the platform too &mdash; the July 2026
-              Hugging Face breach by an autonomous AI agent shows supply-chain
-              security matters
-            </li>
-          </ul>
+      <dl class="provenance-details">
+        <div>
+          <dt>Licence</dt>
+          <dd>CC BY-NC 4.0 · noncommercial</dd>
         </div>
+        <div>
+          <dt>Training data</dt>
+          <dd>Approximately 10 hours; source named</dd>
+        </div>
+        <div>
+          <dt>Permissions</dt>
+          <dd>Appropriate permissions stated</dd>
+        </div>
+        <div>
+          <dt>Ethics</dt>
+          <dd>Consent and bias addressed</dd>
+        </div>
+        <div>
+          <dt>Limitations</dt>
+          <dd>Language and speaker constraints stated</dd>
+        </div>
+      </dl>
 
+      <a
+        class="provenance-link"
+        href="https://huggingface.co/CLEAR-Global/TWB-Voice-Kanuri-TTS-1.0"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the model card ↗
+      </a>
+    </article>
+
+    <article class="provenance-card provenance-unresolved">
+      <header class="provenance-card-header">
+        <img
+          class="provenance-logo"
+          src="https://huggingface.co/front/assets/huggingface_logo-noborder.svg"
+          width="40"
+          height="40"
+          alt=""
+        />
+        <div>
+          <span class="provenance-owner">SatiricalGuru</span>
+          <h3>Trump voice clone</h3>
+        </div>
+      </header>
+
+      <span class="provenance-status">Questions unresolved</span>
+
+      <dl class="provenance-details">
+        <div>
+          <dt>Licence</dt>
+          <dd>MIT listed</dd>
+        </div>
+        <div>
+          <dt>Training data</dt>
+          <dd>Provenance not documented</dd>
+        </div>
+        <div>
+          <dt>Permissions</dt>
+          <dd>Voice consent not documented</dd>
+        </div>
+        <div>
+          <dt>Ethics</dt>
+          <dd>No dedicated discussion</dd>
+        </div>
+        <div>
+          <dt>Limitations</dt>
+          <dd>No dedicated discussion</dd>
+        </div>
+      </dl>
+
+      <a
+        class="provenance-link"
+        href="https://huggingface.co/SatiricalGuru/beatrice-voice-models"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Read the model card ↗
+      </a>
+    </article>
+  </div>
+
+  <p class="provenance-takeaway">
+    Both are easy to download.
+    <strong>Can we assess whether they are appropriate to use?</strong>
+  </p>
+</div>
         <!-- Slide 4: Workshop support -->
-        <div class="slide" id="slide-3">
-          <h2>Before, during and after the workshop</h2>
-          <div class="divider"></div>
+        <div class="slide workshop-slide" id="slide-3">
+  <h2>Before, during and after the workshop</h2>
 
-          <div class="two-col">
-            <div>
-              <div class="col-label">Before</div>
-              <div class="col-content">
-                <ul>
-                  <li>Brief the academic on changes and constraints.</li>
-                  <li>
-                    Check accessibility needs: seating, screen magnification,
-                    input devices and familiarity with the lab interface.
-                  </li>
-                  <li>
-                    Prepare a quick-reference handout, a pre-loaded workflow and
-                    a known-good checkpoint.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <div class="col-label">During</div>
-              <div class="col-content">
-                <ul>
-                  <li>Begin with a guided walkthrough.</li>
-                  <li>Pair experienced students with beginners.</li>
-                  <li>
-                    Stay present and step in when confusion becomes frustration.
-                  </li>
-                </ul>
-              </div>
-            </div>
-
-            <div>
-              <div class="col-label">After</div>
-              <div class="col-content">
-                <ul>
-                  <li>
-                    Record the environment, versions, model checksums and
-                    licensing decisions.
-                  </li>
-                  <li>Gather feedback and update the runbook.</li>
-                  <li>
-                    Build a library of tested workflows and guidance for
-                    independent practice.
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          <p class="closing">
-            Lower the threshold of entry without lowering the ceiling of what’s
-            possible.
-          </p>
+  <div class="workshop-stages">
+    <article class="workshop-stage stage-before">
+      <header class="workshop-stage-header">
+        <span class="workshop-number" aria-hidden="true">01</span>
+        <div>
+          <span class="workshop-phase">Before</span>
+          <h3>Prepare for participation</h3>
         </div>
+      </header>
 
+      <ul>
+        <li>
+          Brief the academic on changes and constraints.
+        </li>
+        <li>
+          Check accessibility: seating, screen magnification,
+          input devices and familiarity with the lab interface.
+        </li>
+        <li>
+          Prepare a quick-reference handout, a preloaded workflow
+          and a tested checkpoint.
+        </li>
+      </ul>
+    </article>
+
+    <article class="workshop-stage stage-during">
+      <header class="workshop-stage-header">
+        <span class="workshop-number" aria-hidden="true">02</span>
+        <div>
+          <span class="workshop-phase">During</span>
+          <h3>Support exploration</h3>
+        </div>
+      </header>
+
+      <ul>
+        <li>
+          Begin with a guided walkthrough.
+        </li>
+        <li>
+          Invite peer support between students with different
+          levels of experience.
+        </li>
+        <li>
+          Stay available and step in before confusion becomes
+          frustration.
+        </li>
+      </ul>
+    </article>
+
+    <article class="workshop-stage stage-after">
+      <header class="workshop-stage-header">
+        <span class="workshop-number" aria-hidden="true">03</span>
+        <div>
+          <span class="workshop-phase">After</span>
+          <h3>Make learning reusable</h3>
+        </div>
+      </header>
+
+      <ul>
+        <li>
+          Record the environment, versions, model checksums
+          and licensing decisions.
+        </li>
+        <li>
+          Gather feedback and update the runbook.
+        </li>
+        <li>
+          Build a library of tested workflows and guidance
+          for independent practice.
+        </li>
+      </ul>
+    </article>
+  </div>
+
+  <p class="workshop-principle">
+    Lower the threshold of entry without lowering
+    the ceiling of what’s possible.
+  </p>
+</div>
         <!-- Slide 5: Diagnostic flowchart -->
         <div class="slide" id="slide-4">
           <h2>Workshop preflight diagnostic</h2>
