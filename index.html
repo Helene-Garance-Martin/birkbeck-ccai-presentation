@@ -373,7 +373,7 @@
 
         <!-- Slide 5: Diagnostic flowchart -->
         <div class="slide" id="slide-4">
-          <h2>Workshop preflight diagnostic</h2>
+          <h2>Comfy.UI: Workshop preflight diagnostic</h2>
           <div class="divider"></div>
 
           <p>
@@ -694,15 +694,36 @@
             <!-- Tooltips -->
             <div class="flow-tip" id="tip-preflight">
               <div class="tip-title">
-                Preflight check &mdash; the evening before
+                Preflight — test the actual ComfyUI workflow
               </div>
 
-              Run the full diagnostic on every machine. Never assume last week's
-              setup still works &mdash; model updates, driver patches and custom
-              node changes break things silently.
+              <p>Proposed checks for the workshop scenario:</p>
+
+              <div class="tip-term">
+                <div class="tip-out">
+                  1. Launch ComfyUI and load the workshop’s workflow JSON.
+                </div>
+
+                <div class="tip-out">
+                  2. Check that the required models and custom nodes are
+                  available; inspect startup errors.
+                </div>
+
+                <div class="tip-out">
+                  3. Run a small example with the intended settings. Check the
+                  output, runtime and GPU memory use.
+                </div>
+
+                <div class="tip-out">
+                  4. Repeat the test on each student machine, recording versions
+                  and any fixes.
+                </div>
+              </div>
 
               <div class="tip-note">
-                One golden config &rarr; replicate across all 6 machines.
+                This diagnostic is a proposed approach, not a completed lab
+                test. My separate LoRA experiment ran through Python scripts on
+                a rented GPU.
               </div>
             </div>
 
